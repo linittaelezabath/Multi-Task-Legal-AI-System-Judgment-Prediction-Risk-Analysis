@@ -1,0 +1,285 @@
+/* ---------------- VARIABLES & RESET ---------------- */
+:root {
+    --primary: #2563eb;       /* Modern Blue */
+    --primary-dark: #1e40af;
+    --secondary: #64748b;     /* Slate Gray */
+    --bg-gradient-start: #f8fafc;
+    --bg-gradient-end: #e2e8f0;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --radius: 12px;
+}
+.hidden {
+    display: none !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif; /* Added Inter font */
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    margin: 0;
+    padding: 40px 20px;
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ---------------- CONTAINER ---------------- */
+.container {
+    max-width: 800px;
+    margin: auto;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* ---------------- TYPOGRAPHY ---------------- */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    background: -webkit-linear-gradient(45deg, var(--primary), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* ---------------- UPLOAD BOX (Styled Input) ---------------- */
+.upload-box {
+    background: var(--card-bg);
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--radius);
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.upload-box:hover {
+    border-color: var(--primary);
+    background: #f0f9ff;
+    transform: translateY(-2px);
+}
+
+/* Hide default ugly file input */
+input[type="file"] {
+    display: none;
+}
+
+/* Custom Label acts as the button */
+.file-label {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 15px;
+}
+
+.file-label:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.file-name {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ---------------- BUTTON ---------------- */
+button.action-btn {
+    padding: 14px 30px;
+    background: var(--text-main);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: var(--shadow-md);
+}
+
+button.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: #0f172a;
+}
+
+/* ---------------- CARDS ---------------- */
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    margin: 25px 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--primary-dark);
+    font-size: 1.25rem;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* ---------------- HIGHLIGHT CARD ---------------- */
+.highlight {
+    border-left: 5px solid var(--primary);
+    background: linear-gradient(to right, #f8fafc, #ffffff);
+}
+
+/* ---------------- TEXT UTILITIES ---------------- */
+.big-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* Dynamic Colors for Results (Add these classes via JS) */
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
+
+/* ---------------- BADGE ---------------- */
+.badge {
+    display: inline-block;
+    background: #e0e7ff;
+    color: var(--primary-dark);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ---------------- STATS GRID ---------------- */
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+    line-height: 1;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ---------------- LOADER ---------------- */
+.loader-container {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin-top: 20px;
+}
+
+.loader {
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    
+    .stats {
+        grid-template-columns: 1fr; /* Stack stats on mobile */
+        text-align: center;
+    }
+    
+    .card { padding: 20px; }
+    
+    .upload-box { padding: 30px 15px; }
+}
+
+/* ================= SUMMARY CARD ================= */
+
+.summary-card {
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    border-left: 6px solid #2c3e50;
+}
+
+.summary-content {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2c3e50;
+    text-align: justify;
+    white-space: pre-wrap;        /* preserves formatting */
+    word-wrap: break-word;        /* prevents overflow */
+    overflow-wrap: break-word;
+}
+
+/* Add subtle paragraph spacing */
+.summary-content p {
+    margin-bottom: 12px;
+}

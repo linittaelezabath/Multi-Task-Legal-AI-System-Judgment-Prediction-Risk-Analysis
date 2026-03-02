@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Legal AI System</title>
+    <!-- 1. Added Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="hero">
+            <h1>⚖️ Multi-Task Legal AI</h1>
+            <p>Advanced Judgment Prediction & Risk Analysis</p>
+        </div>
+
+        <!-- UPLOAD SECTION -->
+        <div class="upload-box">
+            <!-- 2. Wrapped input in a label for styling -->
+            <label for="pdfFile" class="file-label">
+                📂 Choose PDF Document
+            </label>
+            <input type="file" id="pdfFile" accept=".pdf" onchange="updateFileName()">
+            
+            <!-- Display selected file name -->
+            <span id="fileNameDisplay" class="file-name">No file selected</span>
+            
+            <br><br>
+            
+            <button class="action-btn" onclick="uploadPDF()">Upload & Analyze</button>
+        </div>
+
+        <!-- LOADING -->
+        <div id="loading" class="hidden loader-container">
+            <div class="loader"></div>
+            <p>Analyzing legal document structure...</p>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="results" class="hidden">
+
+            <h2 class="section-title" style="text-align:center; color: var(--text-muted); margin-top:40px;">📋 Analysis Results</h2>
+            
+            <div class="card summary-card">
+                <h3>📄 Case Summary</h3>
+                <div class="summary-content" id="summary"></div>
+            </div>
+
+            <div class="card highlight">
+                <h3>⚖️ Predicted Outcome</h3>
+                <p class="big-text" id="outcome"></p>
+                <p style="margin-top:10px;">Confidence Score: <span id="confidence" class="badge"></span></p>
+            </div>
+
+            <div class="card">
+                <h3>📉 Risk Assessment</h3>
+                <!-- Add a class like 'text-danger' or 'text-success' via JS based on risk -->
+                <p class="big-text" id="risk"></p>
+            </div>
+
+            <div class="card">
+                <h3>🧠 Judicial Reasoning</h3>
+                <p id="reason" style="line-height: 1.8;"></p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Document Statistics</h3>
+                <div class="stats">
+                    <div>
+                        <p class="stat-number" id="words">0</p>
+                        <p class="stat-label">Total Words</p>
+                    </div>
+                    <div>
+                        <p class="stat-number" id="sentences">0</p>
+                        <p class="stat-label">Sentences</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+    <!-- Small script to update file name visually -->
+    <script>
+        function updateFileName() {
+            const input = document.getElementById('pdfFile');
+            const display = document.getElementById('fileNameDisplay');
+            if(input.files.length > 0) {
+                display.textContent = "Selected: " + input.files[0].name;
+                display.style.color = "#2563eb";
+                display.style.fontWeight = "bold";
+            }
+        }
+    </script>
+</body>
+</html>
