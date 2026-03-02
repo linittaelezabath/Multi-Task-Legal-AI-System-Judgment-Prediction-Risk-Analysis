@@ -1,0 +1,13 @@
+torch
+transformers
+datasets
+seqeval
+scikit-learn
+nltk
+tqdm
+flask
+PyPDF2
+pytesseract
+pdf2image
+Pillow
+numpy
